@@ -1,32 +1,20 @@
-React + TypeScript + Vite Boilerplate with TenStackquery, Ant Design, Husky, Tailwind CSS, i18next, Twin.macro, Axios, Basic Auth, Dashboard, Theme Functionality, React Router DOM, and React Hooks
+React + TypeScript + Vite Boilerplate with TenStack Query, Ant Design, Husky, Tailwind CSS, i18next, Twin.macro, Axios, Basic Auth, Dashboard, Theme Functionality, React Router DOM, and React Hooks
 
 This boilerplate provides a robust setup for developing React applications with TypeScript and Vite, along with several additional features and libraries to enhance your development experience.
 Features Included:
 
   1- React + TypeScript + Vite: A modern and efficient setup for developing React applications with TypeScript support using Vite for fast bundling and Hot Module Replacement (HMR).
-
-  2- TenStackquery
-
+  2- TenStack Query
   3- Ant Design
-
   4- Tailwind CSS
-
   5- i18next
-
   6- Husky
-
-  7- Twin.macro
-
+  7- tw-classnames
   8- Axios
-
-  9- Basic Login & Signup
-
+  9- Basic Login & Sign up
   10- Dashboard Page
-
   11- Theme Functionality
-
   12- React Router DOM
-
   13- React Hooks Pattern
 
 Getting Started:
