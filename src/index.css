@@ -31,9 +31,9 @@ html {
   font-size: var(--base-font-size);
   line-height: var(--base-line-height);
 
-  background-color: var(--color-secondary);
+  background-color: var(--color-white);
 
-  color: var(--color-white);
+  color: var(--color-secondary);
   overflow-x: hidden;
 
   box-sizing: border-box;

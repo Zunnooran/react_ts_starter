@@ -18,6 +18,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.40.1",
     "@tanstack/react-query-devtools": "^5.40.1",
+    "antd": "^5.18.0",
     "axios": "^1.7.2",
     "i18n": "^0.15.1",
     "i18next": "^23.11.5",
