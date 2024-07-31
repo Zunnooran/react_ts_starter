@@ -13,9 +13,7 @@
   "useTabs": false,
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
-  "plugins": [
-    "@trivago/prettier-plugin-sort-imports"
-  ],
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": [
     "^react(.*)",
     "<THIRD_PARTY_MODULES>",

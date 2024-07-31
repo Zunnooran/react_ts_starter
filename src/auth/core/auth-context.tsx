@@ -103,4 +103,5 @@ function AuthInit({ children }: IProps) {
   return showSplashScreen ? <div>Loading...</div> : children;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { AuthProvider, useAuth, AuthInit };

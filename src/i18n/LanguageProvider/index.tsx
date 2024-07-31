@@ -1,4 +1,4 @@
-/* eslint-disable no-void */
+/* eslint-disable react-refresh/only-export-components */
 import React from 'react';
 import { initReactI18next, useTranslation } from 'react-i18next';
 
@@ -82,7 +82,6 @@ export function LanguageProvider({
 
   return (
     <LanguageProviderContext.Provider
-      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         useTranslation,
         currentLanguage,
