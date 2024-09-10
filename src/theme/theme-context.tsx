@@ -1,50 +1,46 @@
-import { ReactNode, createContext, useContext, useMemo, useState } from 'react';
+import React, { ReactNode, createContext, useContext, useEffect, useMemo, useState } from 'react';
 
-import { ConfigProvider as AntdConfigProvider, theme } from 'antd';
+type Theme = 'light' | 'dark';
 
-interface ThemeContextProps {
-  isDarkMode: boolean;
+interface ThemeContextType {
+  theme: Theme | undefined;
   toggleTheme: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
+const initThemeContextPropsState = {
+  theme: undefined,
+  toggleTheme: () => {},
+};
+const ThemeContext = createContext<ThemeContextType>(initThemeContextPropsState);
 
-interface ThemeProviderProps {
-  children: ReactNode;
-}
+const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [theme, setTheme] = useState<Theme>(() => {
+    // Check for user preference in localStorage
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    if (savedTheme) return savedTheme;
 
-export function ThemeProvider({ children }: ThemeProviderProps) {
-  const { defaultAlgorithm, darkAlgorithm } = theme;
-  const [isDarkMode, setIsDarkMode] = useState(false);
+    // Fallback to system preference if no saved theme
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
 
-  const contextValue = useMemo(() => {
-    function toggleTheme() {
-      setIsDarkMode((prev) => !prev);
-    }
-    return {
-      isDarkMode,
-      toggleTheme,
-    };
-  }, [isDarkMode]);
+  useEffect(() => {
+    // Apply the theme to the document
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    // Save theme to localStorage
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
-  return (
-    <ThemeContext.Provider value={contextValue}>
-      <AntdConfigProvider
-        theme={{
-          algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
-        }}
-      >
-        {children}
-      </AntdConfigProvider>
-    </ThemeContext.Provider>
-  );
-}
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  const values = useMemo(() => ({ toggleTheme, theme }), [theme]);
+
+  return <ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>;
+};
+const useTheme = () => {
+  return useContext(ThemeContext);
+};
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
-};
+export { ThemeProvider, useTheme };

@@ -25,15 +25,24 @@
   --base-spacing: 1rem;
 }
 
-body,
 html {
+  --color-bg: white;
+  --color-text: black;
+}
+
+html.dark {
+  --color-bg: #000; /* Dark background */
+  --color-text: white; /* Dark text */
+}
+
+body {
   font-family: var(--family-primary);
   font-size: var(--base-font-size);
   line-height: var(--base-line-height);
 
-  background-color: var(--color-white);
+  background-color: var(--color-bg);
+  color: var(--color-text);
 
-  color: var(--color-secondary);
   overflow-x: hidden;
 
   box-sizing: border-box;
